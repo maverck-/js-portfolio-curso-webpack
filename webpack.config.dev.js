@@ -1,9 +1,7 @@
-const path = require('path');
+const path = require("path");
 const Dotenv = require("dotenv-webpack");
-const TerserPlugin = require('terser-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPluging = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPluging = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -11,8 +9,9 @@ module.exports = {
     filename: "js/[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    assetModuleFilename: "assets/images/[hash][ext][query]",
+    // assetModuleFilename: "assets/images/[hash][ext][query]",
   },
+  mode: 'development',
   resolve: {
     extensions: [".js"],
     alias: {
@@ -71,19 +70,5 @@ module.exports = {
     //     },
     //   ],
     // }),
-  ],
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new CssMinimizerPlugin(),
-      new TerserPlugin({
-        terserOptions: {
-          format: {
-            comments: false,
-          },
-        },
-        extractComments: false,
-      }),
-    ],
-  },
+  ]
 };
