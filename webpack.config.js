@@ -33,8 +33,9 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.s?css|.styl$/i,
-        use: [MiniCssExtractPluging.loader, "css-loader", "stylus-loader"],
+        test: /\.s?css$/i,
+        use: [MiniCssExtractPluging.loader, "css-loader",
+      "sass-loader"],
       },
       {
         test: /\.png/,
